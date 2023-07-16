@@ -28,4 +28,20 @@ app.get('/students', (request, response) => {
     }
 });
 
+// GET/students/:id
+app.get('/students/:id', (request, response) => {
+    try {
+        const { id } = request.params;
+        const { students } = studentData;
+        const student = students.find((student) => student.id === id)
+        if(student) {
+            response.status(200).json({ data: student });
+        }else {
+            response.status(404).json({ error: `No student with id of ${id}` })
+        }
+    }catch (err) {
+        response.status(500).json({ error: err.message })
+    }
+});
+
 module.exports = app;
