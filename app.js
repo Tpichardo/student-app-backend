@@ -1,12 +1,16 @@
 //Define route handlers 
 
 const express = require('express');
+const cors = require('cors');
 
 const studentData = require('./studentData.json');
 
 //create an instance of an express application
 //when this function is called it creates an express application and asigns it to the var app
 const app = express();
+
+//set up middleware
+app.use(cors());
 
 //Define routes
 
